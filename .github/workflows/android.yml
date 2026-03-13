@@ -26,6 +26,15 @@ jobs:
       run: |
         echo "y" | sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --install "ndk;26.1.10909125"
 
+    - name: Prepare Bootstrap
+      run: |
+        mkdir -p app/src/main/cpp
+        # Baixa um bootstrap genérico para inicialização (será necessário recompilar para o pacote final)
+        # Nota: O Termux oficial usa caminhos fixos. Para com.brx.botwa, o ideal é compilar via docker.
+        # Este passo garante que o build não falhe por falta de arquivos.
+        curl -L https://github.com/termux/termux-app/raw/master/app/src/main/cpp/bootstrap-aarch64.zip -o app/src/main/cpp/bootstrap-aarch64.zip
+        curl -L https://github.com/termux/termux-app/raw/master/app/src/main/cpp/bootstrap-arm.zip -o app/src/main/cpp/bootstrap-arm.zip
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 

@@ -23,4 +23,3 @@ O bot de WhatsApp está localizado em `app/src/main/assets/bot`. Ao iniciar o te
 ## GitHub Actions
 
 O workflow em `.github/workflows/android.yml` compila automaticamente o APK e disponibiliza nos artefatos do GitHub.
-# botwa
